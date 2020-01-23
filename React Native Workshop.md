@@ -6,6 +6,10 @@ Hello! And welcome to this React Native workshop! We'll spend the next 2.5 hours
 
 Please do ask questions if you have any, but do keep in mind that if its not directly relevant to what we're working on, we may have to hold off chatting about it until the end of the workshop to make sure we get through all the content.
 
+# What is React?
+
+React is a JavaScript library for building user interfaces. It allows you to build encapsulated components that manage their own state, then compose them to make complex UIs. React by default renders client-side, but can also render on the server using Node, and power mobile apps using React Native.
+
 # Quick intro to React Native
 
 React Native is a library that allows you to create native apps for Android and iOS using React JS. You can use React Native in an existing Android or iOS project, or build an entire app from the ground up using React Native. Today we'll be doing the latter!
@@ -139,6 +143,8 @@ In the bare workflow you have full control over every aspect of the native proje
 You can begin a project using the managed workflow, but "eject" into a bare workflow at anytime. However, you *cannot* go in reverse.
 
 We'll stick with the "blank" template in the managed workflow for this workshop. Continue the setup by entering a project name and slug, and say "yes" to install dependencies using Yarn.
+
+Note: The Arrive team opted to not use Expo at all. We wanted an absolute bare bones experience to really understand every aspect as we were vetting whether React Native was a viable choice. We were also using a number of native modules that Expo would not support, so we knew off the bat that a managed workflow would be impossible to use without sacrificing features.
 
 # Running a React Native app
 
@@ -432,7 +438,7 @@ Use this moment to also simplify the container styles as we no longer need most 
       }
     });
 
-Back in the `ScheduleDetails` screen, add the necessary structure and content. Add the various `Text` components needed for the title, date & time, description, speaker name, job title, and an `Image` for the speaker's headshot. You should have something that looks similar to this.
+Back in the `Details` screen, add the necessary structure and content. Add the various `Text` components needed for the title, date & time, description, speaker name, job title, and an `Image` for the speaker's headshot. You should have something that looks similar to this.
 
     import React from "react";
     import { View, Text, Image } from "react-native";
@@ -1238,17 +1244,3 @@ I aim to create and offer future workshops that cover intermediate and advanced 
 I'll be sending a tiny survey out after this to collect your feedback. It helps refine these workshops to make them more efficient and useful for you all.
 
 Once again, thanks! <3
-
-- Additional stuff
-
-    # headerMode
-
-    in the options object for StackNavigator. This applies to the entire stack.
-
-        headerMode: screen
-
-    # Stretch goals
-
-    - theme file
-    - requesting data
-    - favoriting a session
