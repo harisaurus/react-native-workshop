@@ -413,7 +413,7 @@ Then setup the functional component and the default export, along with some impo
       );
     };
     
-    export default DetailScreen;
+    export default DetailsScreen;
 
 To preview this screen, import it in `App.js` and render it instead of the `HomeScreen`. 
 
