@@ -2,7 +2,7 @@
 
 # Welcome!
 
-Hello! And welcome to this React Native workshop! We'll spend the next 2.5 hours taking a look at what React Native is, quickly looking at the tools we'll be using, then diving right into building a project. This is an introductory workshop aimed at helping you familiarize yourselves with React Native. More advanced workshops are in the works and will be offered in the upcoming months. 
+Hello! And welcome to this React Native workshop! We'll spend the next 2.5 hours taking a look at what React Native is, quickly looking at the tools we'll be using, then diving right into building a project. This is an introductory workshop aimed at helping you familiarize yourselves with React Native. More advanced workshops are in the works and will be offered in the upcoming months.
 
 Please do ask questions if you have any, but do keep in mind that if its not directly relevant to what we're working on, we may have to hold off chatting about it until the end of the workshop to make sure we get through all the content.
 
@@ -20,7 +20,7 @@ The important thing to remember here is that the app we build will be a truly na
 
 ## JavaScript + React
 
-We'll be writing lots of regular and React-style JavaScript today! 
+We'll be writing lots of regular and React-style JavaScript today!
 
 ## React Native
 
@@ -43,7 +43,7 @@ Verify and/or install the latest stable version of Node.js
 
 ``` Bash
 brew install node
- 
+
 # or
 brew update
 brew upgrade node
@@ -107,49 +107,49 @@ const exampleObject = {
 
 ## Functions
 
-There are two main ways to create a function: the `function` keyword or the arrow syntax `=>`. Arrow functions can directly return a value from the expression without needing the explicit `return` keyword. 
+There are two main ways to create a function: the `function` keyword or the arrow syntax `=>`. Arrow functions can directly return a value from the expression without needing the explicit `return` keyword.
 
 ``` JavaScript
 // with function keyword
 function example() {
   return "This is fun"
 }
-    
+
 // with arrow syntax
 const example = () => {
   return "This is fun"
 }
-    
+
 // can be simplified and rewritten as
 const examples = () => "This is fun"
-    
+
 // returned objects must be in `()`
 const example = () => {
   return (
     {name: "Haris"}
   )
 }
-    
+
 // can be simplified and rewritten as
 const example = () => ({name: "Haris"})
-    
+
 // with function keyword and 1 param
 function double(num) {
   return num * 2;
 }
-    
+
 // with arrow syntax
 const double = (num) => num * 2;
-    
+
 // simplify since we only have 1 param
 const double = num => num * 2;
 ```
 
 # Create a New React Native App
 
-Lets get started by creating a new React Native app using Expo! 
+Lets get started by creating a new React Native app using Expo!
 
-Run `expo init` to create a new project. Expo provides a number of template options to get started with. You'll also notice the templates grouped into to workflow types: Managed and Bare. 
+Run `expo init` to create a new project. Expo provides a number of template options to get started with. You'll also notice the templates grouped into to workflow types: Managed and Bare.
 
 ## Workflow types
 
@@ -172,7 +172,7 @@ cd [project-name]
 expo start
 ```
 
-This will open the Metro Bundler screen in a new tab in your browser. 
+This will open the Metro Bundler screen in a new tab in your browser.
 
 Click the 'Run on iOS simulator' or hit the `i` key in your terminal to boot up an iOS simulator, install the expo client on it and start your app. This will trigger Metro Bundler to build your app and serve it.
 
@@ -209,7 +209,7 @@ The `Text` component handles *all* textual elements in React Native. All text mu
 
 ## Image
 
-The `Image` component allows you to render an image. You tell the component to render a specific image by passing in an image object to the `source` prop. 
+The `Image` component allows you to render an image. You tell the component to render a specific image by passing in an image object to the `source` prop.
 
 [https://facebook.github.io/react-native/docs/image](https://facebook.github.io/react-native/docs/image)
 
@@ -244,7 +244,7 @@ Applying all your styles inline can get really messy very quickly. So I recommen
 
 ``` JavaScript
 <Text style={styles.example}>This text will be red</Text>
-    
+
 const styles = StyleSheet.create({
   example: {
     color: 'red'
@@ -252,17 +252,17 @@ const styles = StyleSheet.create({
 })
 ```
 
-The `styles` object will continue to grow as new keys are added to represent various 'classes'. 
+The `styles` object will continue to grow as new keys are added to represent various 'classes'.
 
 [https://facebook.github.io/react-native/docs/stylesheet](https://facebook.github.io/react-native/docs/stylesheet)
 
 ## Style arrays
 
-Similar to how you can apply multiple classes to elements in HTML, you can pass in an array of styles into the style prop. 
+Similar to how you can apply multiple classes to elements in HTML, you can pass in an array of styles into the style prop.
 
 ``` JavaScript
 <Text style={[styles.one, styles.two]}>This text will be red</Text>
-    
+
 const styles = StyleSheet.create({
   one: {
     color: 'blue'
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
 
 ## Layout with Flexbox
 
-Layout is achieved through Flexbox. CSS Grids, tables and floats are not available. 
+Layout is achieved through Flexbox. CSS Grids, tables and floats are not available.
 
 Some fundamentals:
 
@@ -295,13 +295,13 @@ First, create a new folder in the root directory and name it `screens`. This is 
 
 Create a new file in the `screens` directory and call it `HomeScreen.js`.
 
-Setup this file by creating a new functional component named `HomeScreen` , setting up initial imports, and add some temporary text to test things out. 
+Setup this file by creating a new functional component named `HomeScreen` , setting up initial imports, and add some temporary text to test things out.
 
 
 ``` JavaScript
 import React from "react";
 import {Text, View} from "react-native";
-    
+
 const HomeScreen = () => {
   return (
     <View>
@@ -309,7 +309,7 @@ const HomeScreen = () => {
     </View>
   );
 };
-    
+
 export default HomeScreen;
 ```
 
@@ -319,7 +319,7 @@ This is great, but you'll notice that our app doesn't render this component we c
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
-    
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -327,7 +327,7 @@ export default function App() {
     </View>
   );
 }
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -346,21 +346,21 @@ Alright, let's head back to the Home screen. This screen will consist of the app
 ``` JavaScript
 import React from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
-    
+
 const HomeScreen = () => {
   return (
     <View>
       <Image />
       <Text>RNCONF</Text>
       <Text>The best React Native conference, powered by Shopify</Text>
-    
+
        <TouchableOpacity>
          <Text>See schedule</Text>
        </TouchableOpacity>
     </View>
   );
 };
-    
+
 export default HomeScreen;
 ```
 
@@ -389,14 +389,14 @@ const HomeScreen = () => {
       <Text style={styles.description}>
         The best React Native conference, powered by Shopify
       </Text>
-    
+
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>See schedule</Text>
       </TouchableOpacity>
     </View>
   );
 };
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -449,7 +449,7 @@ Then setup the functional component and the default export, along with some impo
 ``` JavaScript
 import React from "react";
 import { View, Text } from "react-native";
-    
+
 const DetailsScreen = () => {
   return (
     <View>
@@ -457,11 +457,11 @@ const DetailsScreen = () => {
     </View>
   );
 };
-    
+
 export default DetailsScreen;
 ```
 
-To preview this screen, import it in `App.js` and render it instead of the `HomeScreen`. 
+To preview this screen, import it in `App.js` and render it instead of the `HomeScreen`.
 
 Use this moment to also simplify the container styles as we no longer need most of them at the App level, since we're applying styles to individual screens directly.
 
@@ -470,7 +470,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import DetailsScreen from "./screens/DetailsScreen";
-    
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -478,7 +478,7 @@ export default function App() {
     </View>
   );
 }
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -492,7 +492,7 @@ Back in the `Details` screen, add the necessary structure and content. Add the v
 ``` JavaScript
 import React from "react";
 import { View, Text, Image } from "react-native";
-    
+
 const DetailsScreen = () => {
   return (
     <View>
@@ -516,7 +516,7 @@ const DetailsScreen = () => {
     </View>
   );
 };
-    
+
 export default DetailsScreen;
 ```
 
@@ -552,7 +552,7 @@ const DetailsScreen = () => {
     </View>
   );
 };
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -617,7 +617,7 @@ The schedule screen will show a list of all the talks during the conference. It'
 
 Before diving in, let's cover two new components React Native provides: `FlatList` and `SectionList`. These two components are built on top of `ScrollView`, so they have all the same benefits. They also have further optimizations to handle super long lists. They do this primarily by avoiding rendering things that are out of view.
 
-Consider a grocery list app. If you wanted to show a list of all items without any grouping, you'd utilize a `FlatList`. Now let's say you wanted to show that same list but organized in different categories, or sections: Fruits, Vegetables, Cleaning, Misc. Here, you'd use a `SectionList` instead. 
+Consider a grocery list app. If you wanted to show a list of all items without any grouping, you'd utilize a `FlatList`. Now let's say you wanted to show that same list but organized in different categories, or sections: Fruits, Vegetables, Cleaning, Misc. Here, you'd use a `SectionList` instead.
 
 Back to the conference app: We could render a list that shows all the talk names and times in one giant list, but it'd make more sense to organize it by time. So, we'll be using a `SectionList` with the talk times representing the section headings/titles.
 
@@ -628,10 +628,10 @@ Create a new file in the `screens` directory and call it `ScheduleScreen.js` and
 
 ``` JavaScript
 // ScheduleScreen.js
-    
+
 import React from "react";
 import { View, Text } from "react-native";
-    
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -639,17 +639,17 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 export default ScheduleScreen;
 
 // App.js
-    
+
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import DetailsScreen from "./screens/DetailsScreen";
 import ScheduleScreen from "./screens/ScheduleScreen";
-    
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -657,7 +657,7 @@ export default function App() {
     </View>
   );
 }
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -671,7 +671,7 @@ Import the `SectionList` component from `react-native` and render one in the `Sc
 ``` JavaScript
 import React from "react";
 import { View, Text, SectionList } from "react-native";
-    
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -680,7 +680,7 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 export default ScheduleScreen;
 ```
 
@@ -695,7 +695,7 @@ Our mock data is available in the provided `mockdata.js` file. Add this file to 
 import React from "react";
 import { View, Text, SectionList } from "react-native";
 import { mockData } from "../mockData";
-    
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -704,7 +704,7 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 export default ScheduleScreen;
 ```
 
@@ -719,7 +719,7 @@ const singleItem = data => {
     </View>
   );
 };
-    
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -736,7 +736,7 @@ Excellent! Now use the received `data` to pull out actual information rather tha
 ``` JavaScript
 const singleItem = data => {
   const item = data.item;
-    
+
   return (
     <View>
       <Text>{item.title}</Text>
@@ -755,9 +755,9 @@ A `SectionList` has a number of optional props.
 
 ``` JavaScript
 ..
-    
+
 const keyExtractor = item => item.id;
-    
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -780,11 +780,11 @@ Rendered between each item, but not at the top or bottom. Import `StyleSheet` fr
 ..
 import { View, Text, SectionList, StyleSheet } from "react-native";
 ..
-    
+
 const divider = () => {
   return <View style={styles.divider} />;
 };
-    
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -798,7 +798,7 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 const styles = StyleSheet.create({
   divider: {
     width: "100%",
@@ -816,7 +816,7 @@ Add some styles to separate these headers out from the other items.
 
 ``` JavaScript
 ..
-    
+
 const sectionHeader = data => {
   const section = data.section;
   return (
@@ -825,7 +825,7 @@ const sectionHeader = data => {
     </View>
   );
 };
-    
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -840,7 +840,7 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 const styles = StyleSheet.create({
   divider: { .. },
   sectionHeader: {
@@ -853,7 +853,7 @@ const styles = StyleSheet.create({
     color: "white"
   },
 });
-    
+
 ..
 ```
 
@@ -863,7 +863,7 @@ Rendered at the very beginning of the list. Add some styles here too.
 
 ``` JavaScript
 ..
-    
+
 const listHeader = () => {
   return (
     <View style={styles.listHeader}>
@@ -871,8 +871,8 @@ const listHeader = () => {
     </View>
   );
 };
-    
-    
+
+
 const ScheduleScreen = () => {
   return (
     <View>
@@ -888,7 +888,7 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 const styles = StyleSheet.create({
   divider: { .. },
   sectionHeader: { .. },
@@ -905,7 +905,7 @@ const styles = StyleSheet.create({
     fontWeight: "600"
   }
 });
-    
+
 ..
 ```
 
@@ -913,7 +913,7 @@ Lastly, add styles for the individual talk items, add container styles, and remo
 
 ``` JavaScript
 const singleItem = data => {
-    
+
   const item = data.item;
   return (
     <View style={styles.singleItem}>
@@ -921,9 +921,9 @@ const singleItem = data => {
     </View>
   );
 };
-    
+
 ..
-    
+
 const ScheduleScreen = () => {
   return (
     <View style={styles.container}>
@@ -938,9 +938,9 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 ..
-    
+
 const styles = StyleSheet.create({
   divider: { .. },
   sectionHeader: { .. },
@@ -966,23 +966,23 @@ Your final code for `ScheduleScreen` should something like this:
 import React from "react";
 import { View, Text, SectionList, StyleSheet } from "react-native";
 import { mockData } from "../mockData";
-    
+
 const singleItem = data => {
   const item = data.item;
-    
+
   return (
     <View style={styles.singleItem}>
       <Text>{item.title}</Text>
     </View>
   );
 };
-    
+
 const keyExtractor = item => item.id;
-    
+
 const divider = () => {
   return <View style={styles.divider} />;
 };
-    
+
 const sectionHeader = data => {
   const section = data.section;
   return (
@@ -991,7 +991,7 @@ const sectionHeader = data => {
     </View>
   );
 };
-    
+
 const listHeader = () => {
   return (
     <View style={styles.listHeader}>
@@ -999,7 +999,7 @@ const listHeader = () => {
     </View>
   );
 };
-    
+
 const ScheduleScreen = () => {
   return (
     <View style={styles.container}>
@@ -1014,7 +1014,7 @@ const ScheduleScreen = () => {
     </View>
   );
 };
-    
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -1050,7 +1050,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20
   }
 });
-    
+
 export default ScheduleScreen;
 ```
 
@@ -1082,7 +1082,7 @@ Provides a way for your app to transition between screens where each new screen 
 
 ### Drawer Navigator
 
-Creates a drawer that you can toggle in and out. 
+Creates a drawer that you can toggle in and out.
 
 ### Bottom Tab Navigator
 
@@ -1122,7 +1122,7 @@ const AppNavigator = createStackNavigator(
     Home: HomeScreen,
   }
 );
-    
+
 export default createAppContainer(AppNavigator);
 ```
 
@@ -1157,7 +1157,7 @@ const AppNavigator = createStackNavigator(
 
 ## Moving between screens
 
-The next obvious question is: "How do I go from one route to another?". 
+The next obvious question is: "How do I go from one route to another?".
 
 The steps we took previously now provides a `navigation` property to every route component; in our case that's `HomeScreen`, `ScheduleScreen` and `DetailsScreen`.
 
@@ -1168,27 +1168,27 @@ const HomeScreen = (props) => {
 ..
 ```
 
-`navigate` is an available function on the `props.navigation` object. We can cal this with the name of the route that we'd like to move the user to. 
+`navigate` is an available function on the `props.navigation` object. We can cal this with the name of the route that we'd like to move the user to.
 
 Update the `TouchableOpacity` button to include the `onPress` prop and pass in an anonymous function which navigates the user to the "Schedule" screen.
 
 ``` JavaScript
 // Step 1: add `onPress` prop
-    
+
 <TouchableOpacity
   style={styles.button}
   onPress={}
 >
 
 // Step 2: pass in anonymous function to onPress prop
-    
+
 <TouchableOpacity
   style={styles.button}
   onPress={() => {}}
 >
 
 // Step 3: use navigate function
-    
+
 <TouchableOpacity
   style={styles.button}
   onPress={() => {
@@ -1211,7 +1211,7 @@ Next, update the `singleItem` component to use `TouchableOpacity` since we want 
 ``` JavaScript
 const singleItem = data => {
   const item = data.item;
-    
+
   return (
     <TouchableOpacity onPress={() => {}}>
       <View style={styles.singleItem}>
@@ -1224,7 +1224,7 @@ const singleItem = data => {
 
 The `onPress` prop's function will need to call the `navigate` function on the `navigation` object, but there is a problem with our current setup. The `navigation` object is only available in the `ScheduleScreen` component's props, but we need access to it in the `singleItem` component's scope.
 
-The simplest solution here is to move `singleItem` into the `ScheduleScreen` function before the `return`. `singleItem` now has access to `ScheduleScreen`'s scope. There is a small performance penalty for doing it this way, but its negligible for our needs and time constraint. 
+The simplest solution here is to move `singleItem` into the `ScheduleScreen` function before the `return`. `singleItem` now has access to `ScheduleScreen`'s scope. There is a small performance penalty for doing it this way, but its negligible for our needs and time constraint.
 
 Update the `onPress` callback now to navigate to the "Details" screen.
 
@@ -1233,7 +1233,7 @@ Update the `onPress` callback now to navigate to the "Details" screen.
 const ScheduleScreen = props => {
   const singleItem = data => {
     const item = data.item;
-    
+
     return (
       <TouchableOpacity onPress={() => props.navigation.navigate("Details")}>
         <View style={styles.singleItem}>
@@ -1242,7 +1242,7 @@ const ScheduleScreen = props => {
       </TouchableOpacity>
     );
   };
-    
+
   return ( .. )
 }
 ```
@@ -1266,7 +1266,7 @@ Now in `DetailsScreen.js`, first update `DetailsScreen` to expect `props`. Optio
 ``` JavaScript
 const DetailScreen = props => {
   const talkData = props.navigation.state.params.talkData;
-    
+
   ..
 ```
 
@@ -1300,7 +1300,7 @@ And finally, update the speaker values. The final code for the `DetailsScreen` s
 ``` JavaScript
 const DetailsScreen = props => {
   const talkData = props.navigation.state.params.talkData;
-    
+
   return (
     <View style={styles.container}>
       <View style={styles.talkDetails}>
@@ -1360,7 +1360,7 @@ ScheduleScreen.navigationOptions = () => ({
 
 # All done!
 
-And that's a wrap! You now have a fully functioning React Native app with navigation and a super cool SectionList. What we've covered today are important fundamentals that you'll need to continue your React Native adventure. 
+And that's a wrap! You now have a fully functioning React Native app with navigation and a super cool SectionList. What we've covered today are important fundamentals that you'll need to continue your React Native adventure.
 
 I aim to create and offer future workshops that cover intermediate and advanced concepts (data handling, state management, etc). If you're interested, do let me know and keep an eye on the #react-native Slack channel.
 
