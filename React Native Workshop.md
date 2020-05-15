@@ -78,7 +78,7 @@ You can use single, double, and back-ticks to create string literals, only back-
 
 ``` JavaScript
 const name = "Haris";
-    
+
 console.log("Hello " + name);
 console.log('Hello ' + name);
 console.log(`Hello ${name}`);
@@ -95,13 +95,13 @@ Use curly brackets `{}` to create objects (string indexed dictionaries).
 
 ``` JavaScript
 const exampleObject = {
-	name: "Haris",
+  name: "Haris",
   role: "Senior Engineer",
-	employer: "Shopify",
-	coworkers: ["Ryan", "Sergey", "Alex"],
-	somethingElse: {
-		nested: true
-	}
+  employer: "Shopify",
+  coworkers: ["Ryan", "Sergey", "Alex"],
+  somethingElse: {
+    nested: true
+  }
 }
 ```
 
@@ -112,12 +112,12 @@ There are two main ways to create a function: the `function` keyword or the arro
 ``` JavaScript
 // with function keyword
 function example() {
-	return "This is fun"
+  return "This is fun"
 }
     
 // with arrow syntax
 const example = () => {
-	return "This is fun"
+  return "This is fun"
 }
     
 // can be simplified and rewritten as
@@ -125,9 +125,9 @@ const examples = () => "This is fun"
     
 // returned objects must be in `()`
 const example = () => {
-	return (
-		{name: "Haris"}
-	)
+  return (
+    {name: "Haris"}
+  )
 }
     
 // can be simplified and rewritten as
@@ -135,7 +135,7 @@ const example = () => ({name: "Haris"})
     
 // with function keyword and 1 param
 function double(num) {
-	return num * 2;
+  return num * 2;
 }
     
 // with arrow syntax
@@ -267,8 +267,8 @@ const styles = StyleSheet.create({
   one: {
     color: 'blue'
   },
-	two: {
-		color: 'red'
+  two: {
+    color: 'red'
   }
 })
 ```
@@ -354,9 +354,9 @@ const HomeScreen = () => {
       <Text>RNCONF</Text>
       <Text>The best React Native conference, powered by Shopify</Text>
     
-			 <TouchableOpacity>
-	       <Text>See schedule</Text>
-	     </TouchableOpacity>
+       <TouchableOpacity>
+         <Text>See schedule</Text>
+       </TouchableOpacity>
     </View>
   );
 };
@@ -453,8 +453,8 @@ import { View, Text } from "react-native";
 const DetailsScreen = () => {
   return (
     <View>
-			<Text>Details Screen</Text>
-		</View>
+      <Text>Details Screen</Text>
+    </View>
   );
 };
     
@@ -942,16 +942,16 @@ const ScheduleScreen = () => {
 ..
     
 const styles = StyleSheet.create({
-	divider: { .. },
+  divider: { .. },
   sectionHeader: { .. },
   sectionHeaderText: { .. },
   listHeader: { .. },
   listHeaderText: { .. },
-	singleItem: {
+  singleItem: {
     paddingHorizontal: 16,
     paddingVertical: 20
   },
-	container: {
+  container: {
     flex: 1,
     backgroundColor: "#fff"
   },
@@ -1106,9 +1106,9 @@ Create a stack navigator using `createStackNavigator`. `createStackNavigator` ta
 
 ``` JavaScript
 const AppNavigator = createStackNavigator(
-	{
-	  Home: HomeScreen,
-	}
+  {
+    Home: HomeScreen,
+  }
 );
 ```
 
@@ -1118,9 +1118,9 @@ The default export in `App.js` is currently `App`. The default export needs to b
 
 ``` JavaScript
 const AppNavigator = createStackNavigator(
-	{
-	  Home: HomeScreen,
-	}
+  {
+    Home: HomeScreen,
+  }
 );
     
 export default createAppContainer(AppNavigator);
@@ -1354,7 +1354,7 @@ The "Schedule" screen shows the back button to navigate back to the Home screen.
 ``` JavaScript
 ScheduleScreen.navigationOptions = () => ({
   headerLeft: () => null,
-	gestureEnabled: false,
+  gestureEnabled: false,
 });
 ```
 
