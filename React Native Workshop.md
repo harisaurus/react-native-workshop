@@ -542,7 +542,7 @@ const DetailsScreen = () => {
       <View style={styles.speaker}>
         <Image
           style={styles.avatar}
-          source={{ uri: "https://i.picsum.photos/id/365/80/80.jpg" }}
+          source={{ uri: "https://picsum.photos/id/365/80/80.jpg" }}
         />
         <View>
           <Text style={styles.speakerName}>Speaker name</Text>
