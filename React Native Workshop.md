@@ -57,9 +57,9 @@ Next, install the Expo CLI globally by running the following command. You can al
 npm install -g expo-cli
 ```
 
-## Expo client app
+## Expo Go app
 
-Install the "Expo" client app on your iOS or Android device and create an account. Log into your account in your terminal window by running
+Install the "Expo Go" app on your iOS or Android device and create an account. Log into your account in your terminal window by running
 
 
 ``` Bash
@@ -1168,7 +1168,7 @@ const HomeScreen = (props) => {
 ..
 ```
 
-`navigate` is an available function on the `props.navigation` object. We can cal this with the name of the route that we'd like to move the user to.
+`navigate` is an available function on the `props.navigation` object. We can call this with the name of the route that we'd like to move the user to.
 
 Update the `TouchableOpacity` button to include the `onPress` prop and pass in an anonymous function which navigates the user to the "Schedule" screen.
 
