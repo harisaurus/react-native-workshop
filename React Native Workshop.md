@@ -1065,13 +1065,13 @@ The most commonly used library for navigation is `react-navigation`.
 To install `react-navigation` into our project, run the following command in terminal:
 
 ``` Bash
-yarn add react-navigation
+yarn add @react-navigation/native
 ```
 
 The `react-navigation` library depends on a number of additional libraries. Install expo-supported versions of these libraries by running the following.
 
 ``` Bash
-expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 ```
 
 ## Navigator types
@@ -1091,68 +1091,60 @@ Creates a series of tabs to allow navigating between various screens.
 The stack navigator is the most common way to navigate between screens. Let's add the necessary libraries to create a stack navigator.
 
 ``` Bash
-expo install react-navigation-stack @react-native-community/masked-view
+yarn add @react-navigation/stack
 ```
 
 Before moving forward, restart Expo to pickup these newly available libraries with `control + c` and `expo start`.
 
-Back in `App.js` , import `createAppContainer` from `react-navigation` and `createStackNavigator` from `react-navigation-stack`.
+Back in `App.js` , import `NavigationContainer` from `@react-navigation/native` and `createStackNavigator` from `@react-navigation/stack`.
 
-`createAppContainer` sets up your app with a navigator that is passed in as a parameter. We'll need to create a navigator, then use it as a parameter for `createAppContainer`.
+``` JavaScript
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+```
+
+`NavigationContainer` is a component which manages our navigation tree and contains the navigation state. It must wrap all navigators strucutre. Generally, we'll render this component at the root of our app.
 
 ## Creating a navigator
-
-Create a stack navigator using `createStackNavigator`. `createStackNavigator` takes a *route configuration object* that defines the routes in the navigator. It also supports an options object that we'll omit for now.
+Create a stack navigator using `createStackNavigator`. `createStackNavigator` is a function that returns an object containing `Screen` and `Navigator`. Both are used for configuring the navigator as seen below. Add it right under the imports from the previous step. 
 
 ``` JavaScript
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-  }
-);
+const Stack = createStackNavigator();
 ```
-
+Next, remove everything in the return block of `App.js` and replace it with the following.
+``` JavaScript
+<NavigationContainer>
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={HomeScreen} />
+  </Stack.Navigator>
+</NavigationContainer>
+```
 The casing of the route name doesn't matter -- you can use lowercase home or capitalized Home, it's up to you. We prefer capitalizing our route names.
-
-The default export in `App.js` is currently `App`. The default export needs to be the result of `createAppContainer` instead. The `App()` function and its styles can be commented out or deleted.
-
-``` JavaScript
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-  }
-);
-
-export default createAppContainer(AppNavigator);
-```
 
 Run this code. You'll now see a screen with a navigation bar and a content area that displays our `HomeScreen` component! The styles you see for the navigation bar are the default configuration for a stack navigator, we'll learn how to configure and adjust those later.
 
 Let's add additional routes for our `ScheduleScreen` and `DetailsScreen`.
 
 ``` JavaScript
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Schedule: ScheduleScreen,
-    Details: DetailsScreen
-  }
-);
+<NavigationContainer>
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="Schedule" component={ScheduleScreen} />
+    <Stack.Screen name="Details" component={DetailsScreen} />
+  </Stack.Navigator>
+</NavigationContainer>
 ```
 
 Running this code shows no changes. You might be asking yourself: "How does the navigator know to start from the `HomeScreen`?". Well, the first item provided in the route configuration object is always set as the starting screen unless you explicitly state the initial route in the optional options object. Play around with this to validate.
 
 ``` JavaScript
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Schedule: ScheduleScreen,
-    Details: DetailsScreen
-  },
-  {
-    initialRouteName: "Home"
-  }
-);
+<NavigationContainer initialRouteName="Home">
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="Schedule" component={ScheduleScreen} />
+    <Stack.Screen name="Details" component={DetailsScreen} />
+  </Stack.Navigator>
+</NavigationContainer>
 ```
 
 ## Moving between screens
@@ -1261,11 +1253,11 @@ The `TouchableOpacity` `onPress` prop allows us to navigate to the "Details" scr
 >
 ```
 
-Now in `DetailsScreen.js`, first update `DetailsScreen` to expect `props`. Optional data passed into `navigate` is available under `navigation.state.params`. Pull this object out into a variable for easy reference.
+Now in `DetailsScreen.js`, first update `DetailsScreen` to expect `({ route })`. Optional data passed into `navigate` is available under `route.params`. Pull this object out into a variable for easy reference.
 
 ``` JavaScript
-const DetailScreen = props => {
-  const talkData = props.navigation.state.params.talkData;
+const DetailScreen = ({ route }) => {
+  const talkData = route.params.talkData;
 
   ..
 ```
@@ -1298,8 +1290,8 @@ The speaker section is a little trickier since not every talk has a speaker (bre
 And finally, update the speaker values. The final code for the `DetailsScreen` should look like the following:
 
 ``` JavaScript
-const DetailsScreen = props => {
-  const talkData = props.navigation.state.params.talkData;
+const DetailsScreen = ({ route }) => {
+  const talkData = route.params.talkData;
 
   return (
     <View style={styles.container}>
@@ -1332,9 +1324,13 @@ The Stack Navigator creates the header on every screen in the stack. A navigatio
 The `title` key enables changing the header title.
 
 ``` JavaScript
-HomeScreen.navigationOptions = () => ({
-  title: "Derppp"
-});
+<Stack.Screen 
+  name="Home"
+  component={HomeScreen}
+  options={{
+    title: "Derppp",
+  }}
+/>
 ```
 
 ## Home Screen
@@ -1342,9 +1338,14 @@ HomeScreen.navigationOptions = () => ({
 The "Home" screen doesn't really need the header, so let's completely hide it by using the `headerShown` flag.
 
 ``` JavaScript
-HomeScreen.navigationOptions = () => ({
-  headerShown: false
-});
+<Stack.Screen 
+  name="Home"
+  component={HomeScreen}
+  options={{
+    title: "Derppp",
+    headerShown: false,
+  }}
+/>
 ```
 
 ## Schedule Screen
@@ -1352,10 +1353,14 @@ HomeScreen.navigationOptions = () => ({
 The "Schedule" screen shows the back button to navigate back to the Home screen. This isn't necessary. Hide the left header controls passing the `headerLeft` key a function that returns `null`. This doesn't completely fix the issue since you can still swipe left or tap the android back button to navigate back. The `gestureEnabled` key takes care of this.
 
 ``` JavaScript
-ScheduleScreen.navigationOptions = () => ({
-  headerLeft: () => null,
-  gestureEnabled: false,
-});
+<Stack.Screen
+  name="Schedule"
+  component={ScheduleScreen}
+  options={{
+    headerLeft: () => null,
+    gestureEnabled: false,
+  }}
+/>
 ```
 
 # All done!
